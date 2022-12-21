@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar system</title>
+</head>
+<style>
+    body {
+        background-image: url("Assets/galaxy.gif");
+        z-index: 10;
+    }
+    
+    h1 {
+        color: rgb(231, 223, 223);
+        font-weight: bold;
+        font-size: 15px;
+    }
+    
+    .images {
+        color: rgba(255, 255, 255, 1);
+        width: 8rem;
+        margin-top: 2rem;
+        opacity: 1;
+        margin-left: 30%;
+    }
+    
+    .imagesection {
+        background-color: rgb(42, 41, 41);
+        height: 27rem;
+        width: 92%;
+        opacity: .6;
+    }
+    
+    .imagesectionSubDiv {
+        background-color: rgb(73, 74, 75);
+        color: rgba(255, 255, 255, 255);
+        height: 30%;
+        width: 80%;
+        margin: 25px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .circle {
+        width: 150px;
+        height: 70px;
+        background-color: #aaa;
+        border-radius: 50%;
+        margin: 15px;
+        margin-right: 120px;
+        margin-block: 50px;
+    }
+    
+    span {
+        display: flex;
+        font-size: 14px;
+    }
+    
+    input[type="submit"] {
+        background-color: rgb(138, 135, 135);
+        color: white;
+        border: 2px solid rgb(138, 135, 135);
+        border-radius: 2px;
+    }
+    
+    @media screen and (min-width: 640px) {
+        /* form {
+            border: 2px solid red;
+        } */
+        #inputtedMass {
+            border: 2px solid white;
+            margin-left: 25rem;
+            height: 27px;
+            width: 12.6rem;
+        }
+        .planetsdropdown {
+            height: 33.5px;
+            width: 9rem;
+            border-radius: 3px;
+            margin-left: 3px;
+            margin-right: 6.5px;
+        }
+        #submit {
+            height: 33.5px;
+            width: 7.5rem;
+            border-radius: 3px;
+            font-size: 13.5px;
+        }
+        select {
+            color: grey;
+            font-weight: 500px;
+            font-size: 22;
+        }
+        h1 {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 4rem;
+        }
+        .imagesection {
+            margin-left: 13rem;
+            width: 70%;
+            position: relative;
+        }
+        .imagesectionSubDiv {
+            width: 50%;
+            margin-left: auto;
+            position: absolute;
+            right: 8px;
+            top: 6rem;
+            height: 35%;
+            border: 2px solid green;
+        }
+        .circle {
+            width: 90px;
+            height: 90px;
+            background-color: #aaa;
+            border-radius: 50%;
+            margin: 35px;
+            margin-right: 8rem;
+            border: 2px solid red;
+        }
+        #textspan {
+            text-align: center;
+            border: 2px yellow solid;
+            font-size: 12px;
+            left: 6rem;
+            justify-content: center;
+        }
+        .divimage {
+            position: absolute;
+            width: 35%;
+            height: 60%;
+            border-radius: 50%;
+            border: 2px solid red;
+            background-image: url('Assets/mercury.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            left: 4rem;
+            top: 4.5rem;
+        }
+    }
+</style>
+
+<body>
+    <header>
+        <h1>Calculate a weight of an object on a planet</h1>
+        <form>
+            <input type="text" placeholder="Mass in kilogram" id="inputtedMass">
+            <select name="planets" id="selectedOption" class='planetsdropdown'>
+            <option value="Mercury">Mecury</option>
+            <option value="Venus">Venus</option>
+            <option value="Earth">Earth</option>
+            <option value="Mars">Mars</option>
+            <option value="Jupiter">Jupiter</option>
+            <option value="Saturn">Saturn</option>
+            <option value="Uranus">Uranus</option>
+            <option value="Neptune">Neptune</option>
+            <option value="Pluto">Pluto</option>
+        </select>
+            <input type="submit" value="Calculate Weight" id="submit">
+        </form>
+    </header>
+    <main>
+        <div>
+            <div class="imagesection">
+
+                <!-- <img src="Assets/venus.png" />
+                <img src="Assets/earth.png" />
+                <img src="Assets/mars.png" />
+                <img src="Assets/jupiter.png" />
+                <img src="Assets/saturn.png" />
+                <img src="Assets/uranus.png" />
+                <img src="Assets/neptune.png" />
+                <img src="Assets/pluto.png" /> -->
+                <div class="imagesectionSubDiv">
+                    <div>
+                        <span id="textspan">The weight of the object on Mercury</span>
+                    </div>
+                    <div class="circle"><span></span></div>
+                </div>
+                <div class="divimage">
+                    <!-- <img src="Assets/mercury.png" class="images" /> -->
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+    <script>
+        let planets = [{
+            planetName: 'Mercury',
+            src: 'Assets/mercury.png',
+            surfaceGravity: 0.38,
+        }, {
+            planetName: 'Venus',
+            src: 'Assets/venus.png',
+            surfaceGravity: 0.91,
+        }, {
+            planetName: 'Earth',
+            src: 'Assets/earth.png',
+            surfaceGravity: 9.8,
+        }, {
+            planetName: 'Mars',
+            src: 'Assets/mars.png',
+            surfaceGravity: 0.38,
+        }, {
+            planetName: 'Jupiter',
+            src: 'Assets/jupiter.png',
+            surfaceGravity: 2.34,
+        }, {
+            planetName: 'Saturn',
+            src: 'Assets/saturn.png',
+            surfaceGravity: 0.93,
+        }, {
+            planetName: 'Uranus',
+            src: 'Assets/uranus.png',
+            surfaceGravity: 0.92,
+        }, {
+            planetName: 'Neptune',
+            src: 'Assets/neptune.png',
+            surfaceGravity: 1.12,
+        }, {
+            planetName: 'Pluto',
+            src: 'Assets/pluto.png',
+            surfaceGravity: 0.62,
+        }, ]
+
+        let inputtedMass = document.getElementById('inputtedMass'),
+            selectedOption = document.getElementById('selectedOption'),
+            calulateWeight = document.getElementById('submit');
+        console.log(inputtedMass)
+        console.log(selectedOption)
+        console.log(calulateWeight)
+
+        inputtedMass.addEventListener('click', function(parameter) {
+            for (let i = 0; i < array.length; i++) {
+                const element = planetsdropdown[i];
+                console.log(element)
+            }
+        })
+        selectedOption.addEventListener('click', function(parameter) {
+
+        })
+        calulateWeight.addEventListener('click', function(parameter) {
+
+        })
+    </script>
+</body>
+
+</html>
